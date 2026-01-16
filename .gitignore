@@ -1,0 +1,11 @@
+# Rainmeter temp / runtime files
+lyrics_result.json
+*.log
+
+# Windows noise
+Desktop.ini
+Thumbs.db
+
+# Editors
+.vscode/
+.DS_Store

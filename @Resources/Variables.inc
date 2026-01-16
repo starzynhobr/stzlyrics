@@ -1,0 +1,11 @@
+[Variables]
+BoxW=1000
+BoxH=38
+LyricsX=0
+LyricsY=0
+FontSize=18
+LyricsOffset=0.25
+LyricsFont=Montserrat
+LyricsColor=0,0,0,230
+LyricsShadow=None
+ShadowColor=0,0,0,180
