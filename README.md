@@ -38,5 +38,11 @@ that opens the Windows color picker and writes the color to `@Resources\Variable
 - Lyrics are pulled from `https://lrclib.net`.
 - If a track has no synced lyrics, the first line of plain lyrics is shown.
 
-## License
-MIT. See `LICENSE`.
+## ⚖️ Licenciamento (Dual Licensing)
+
+O **STZLyrics** está disponível sob duas licenças:
+
+1. **Uso Comunitário (GPLv3):** Gratuito para uso pessoal e projetos open-source. Qualquer modificação distribuída deve manter o código aberto.
+2. **Uso Comercial:** Para empresas que desejem integrar a lógica de sincronização com LRCLIB ou o design desta skin em softwares proprietários ou produtos comerciais.
+
+Para adquirir uma licença comercial, entra em contato: [starzynhobr@gmail.com]
