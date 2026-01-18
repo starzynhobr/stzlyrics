@@ -43,6 +43,7 @@ that opens the Windows color picker and writes the color to `@Resources\Variable
 STZLyrics is available under two distinct licenses:
 
 1.Community Use (GPLv3): Free for personal use and open-source projects. Any distributed modifications must remain open-source.
+
 2.Commercial Use: For companies wishing to integrate the LRCLIB synchronization logic or this skin's design into proprietary software or commercial products.
 
 
