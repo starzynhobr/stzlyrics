@@ -38,7 +38,7 @@ that opens the Windows color picker and writes the color to `@Resources\Variable
 - Lyrics are pulled from `https://lrclib.net`.
 - If a track has no synced lyrics, the first line of plain lyrics is shown.
 
-⚖️ Licensing (Dual Licensing)
+## ⚖️ Licensing (Dual Licensing)
 
 STZLyrics is available under two distinct licenses:
 
