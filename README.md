@@ -10,7 +10,7 @@ Single-line, synced lyrics skin for Rainmeter, designed to sit cleanly on the ta
 
 ## Requirements
 - Rainmeter 4.5+
-- WebNowPlaying plugin + browser extension
+- [WebNowPlaying plugin](https://github.com/keifufu/WebNowPlaying-Rainmeter/releases/tag/2.0.7) + browser extension
 - curl.exe available in PATH (Windows 10/11 includes it)
 
 Optional:
