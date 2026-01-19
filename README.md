@@ -10,11 +10,11 @@ Single-line, synced lyrics skin for Rainmeter, designed to sit cleanly on the ta
 
 ## Requirements
 - Rainmeter 4.5+
-- [WebNowPlaying plugin](https://github.com/keifufu/WebNowPlaying-Rainmeter/releases/tag/2.0.7) + browser extension
+- [WebNowPlaying plugin](https://github.com/keifufu/WebNowPlaying-Rainmeter/releases/tag/2.0.7) + [browser extension](https://wnp.keifufu.dev/extension/getting-started)
 - curl.exe available in PATH (Windows 10/11 includes it)
 
 Optional:
-- RainRGB4 (use the RainRGBExample skin)
+- [RainRGB4 (use the RainRGBExample skin)](https://forum.rainmeter.net/viewtopic.php?t=6215)
 
 ## Install
 1) Copy this folder to `Documents\Rainmeter\Skins\STZLyrics`.
