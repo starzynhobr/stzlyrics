@@ -14,44 +14,6 @@ local retryAttempts = 0
 local retryTrackKey = ""
 local syncCurrentIndex = 1
 local lastSyncPos = -1
-local logFilePath = ""
-
-local function LogDebug(msg)
-    if logFilePath == "" then
-        logFilePath = SKIN:GetVariable("CURRENTPATH") .. "STZLyrics_debug.log"
-    end
-    local f = io.open(logFilePath, "ab")
-    if not f then return end
-    local line = "[" .. os.date("%Y-%m-%d %H:%M:%S") .. "] " .. tostring(msg) .. "\r\n"
-    f:write(line)
-    f:close()
-end
-
-local function GetFileSize(path)
-    if not path or path == "" then return -1 end
-    local f = io.open(path, "rb")
-    if not f then return -1 end
-    local size = f:seek("end") or -1
-    f:close()
-    return size
-end
-
-local function GetSearchCmdInfo()
-    local m = SKIN:GetMeasure("mSearchCmd")
-    if not m then return "" end
-    local s = m:GetStringValue() or ""
-    local v = m:GetValue()
-    local out = ""
-    if s ~= "" then
-        out = s
-    end
-    if v ~= nil then
-        if out ~= "" then out = out .. " | " end
-        out = out .. "value=" .. tostring(v)
-    end
-    return out
-end
-
 local function Trim(str)
     return (str:gsub("^%s+", ""):gsub("%s+$", ""))
 end
@@ -252,8 +214,7 @@ local function StartSearch(force)
 
     SKIN:Bang("!SetVariable", "SearchResultFile", fileName)
     local url = "https://lrclib.net/api/search?artist_name=" .. EncodeMeasure("mArtist") .. "&track_name=" .. EncodeMeasure("mTitle")
-    local param = string.format('-s --connect-timeout 5 --max-time 12 --retry 2 --retry-delay 1 -w "exit=%%{exitcode} http=%%{http_code} total=%%{time_total} size=%%{size_download} err=%%{errormsg}" -o "%s" "%s"', currentResultPath, url)
-    LogDebug("StartSearch track=" .. pendingTrackKey .. " file=" .. fileName .. " path=" .. currentResultPath)
+    local param = string.format('-s --connect-timeout 5 --max-time 12 --retry 2 --retry-delay 1 -o "%s" "%s"', currentResultPath, url)
     SKIN:Bang("!SetOption", "mSearchCmd", "Parameter", param)
     SKIN:Bang("!UpdateMeasure", "mSearchCmd")
     SetMeterText("Loading...", true)
@@ -296,7 +257,8 @@ function HandleTrackChange()
         lyricsTable = {}
         syncCurrentIndex = 1
         lastSyncPos = -1
-        lastDisplayedLine = ""        SetMeterText("", true)
+        lastDisplayedLine = ""
+        SetMeterText("", true)
         SKIN:Bang("!HideMeter", "MeterLyrics")
         SKIN:Bang("!UpdateMeter", "MeterLyrics")
         SKIN:Bang("!Redraw")
@@ -322,9 +284,9 @@ function ForceSearch()
 end
 
 function Initialize()
-    logFilePath = SKIN:GetVariable("CURRENTPATH") .. "STZLyrics_debug.log"
-    LogDebug("Initialize")
+    -- Nothing
 end
+
 function EncodeMeasure(measureName)
     local measure = SKIN:GetMeasure(measureName)
     if not measure then return "" end
@@ -367,9 +329,6 @@ function ProcessLyrics()
         TryStartPending()
         return
     end
-
-    local fileSizeBefore = GetFileSize(currentResultPath)
-    LogDebug("ProcessLyrics file size=" .. tostring(fileSizeBefore) .. " cmd=" .. GetSearchCmdInfo())
     local json = ReadFile(currentResultPath)
     lyricsTable = {}
     syncCurrentIndex = 1
@@ -406,8 +365,6 @@ function ProcessLyrics()
             end
         end
     end
-
-    LogDebug("ProcessLyrics success synced=" .. tostring(isSynced) .. " parsed=" .. tostring(#lyricsTable) .. " jsonLen=" .. tostring(json and #json or 0))
     if #lyricsTable == 0 then
         local firstLine = rawLyrics:match("([^\r\n]+)") or rawLyrics
         SetMeterText(firstLine, true)
